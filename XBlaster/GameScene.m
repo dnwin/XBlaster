@@ -8,42 +8,88 @@
 
 #import "GameScene.h"
 
+static const NSUInteger g_max_inflight_buffers = 3;
+float number = 1234;
+
+@interface GameScene()
+
+@property (strong, nonatomic) SKNode *playerLayerNode;
+@property (strong, nonatomic) SKNode *hudLayerNode;
+
+@property (nonatomic) CGRect playableRect;
+@property CGFloat hudHeight;
+
+
+
+
+
+@end
+
 @implementation GameScene
 
--(void)didMoveToView:(SKView *)view {
-    /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Edit Undo Line BRK"];
+-(instancetype)initWithSize:(CGSize)size {
+    self = [super initWithSize:size];
+    if (self) {
+        _playerLayerNode = [[SKNode alloc] init];
+        _hudLayerNode = [[SKNode alloc] init];
+        _hudHeight = 90;
+        
+        // PlaybleRect
+        CGFloat maxAspectRatio = 16.0/9.0;
+        CGFloat maxAspecRatioWidth = self.size.height / maxAspectRatio;
+        CGFloat playableMargin = (self.size.width - maxAspecRatioWidth) / 2.0;
+        _playableRect = CGRectMake(playableMargin, 0, maxAspecRatioWidth, size.height - self.hudHeight);
+        
+        
+        [self setupSceneLayers];
+        [self setupUI];
+    }
     
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 65;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
-    
-    [self addChild:myLabel];
+    return self;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
-}
+
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+}
+
+-(void)setupSceneLayers {
+    self.playerLayerNode.zPosition = 50;
+    // On top
+    self.hudLayerNode.zPosition = 100;
+    
+    [self addChild:self.playerLayerNode];
+    [self addChild:self.hudLayerNode];
+}
+
+-(void)setupUI {
+    
+    // Make a black HUD node on top of screen
+    CGSize backgroundSize = CGSizeMake(self.size.width, self.hudHeight);
+    SKColor *backgroundColor = [SKColor blackColor];
+    
+    SKSpriteNode *hudBarBackground = [[SKSpriteNode alloc] initWithColor:backgroundColor size:backgroundSize];
+
+    // Set position of HUD to top of screen minus desired hudheight/size
+    hudBarBackground.position = CGPointMake(0, self.size.height - self.hudHeight);
+    hudBarBackground.anchorPoint = CGPointZero;
+    [self.hudLayerNode addChild:hudBarBackground];
+    
+    // Score Label inside hud
+    SKLabelNode *scoreLabel = [[SKLabelNode alloc] initWithFontNamed:@"Edit Undo Line BRK"];
+    scoreLabel.fontSize = 50;
+    scoreLabel.text = @"Score: 0";
+    scoreLabel.name = @"scoreLabel";
+    scoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
+    
+    // Configure position in terms of superview
+    scoreLabel.position = CGPointMake(self.size.width / 2, self.size.height - scoreLabel.frame.size.height + 3);
+    [self.hudLayerNode addChild:scoreLabel];
+    
+    
+    
+    
 }
 
 @end

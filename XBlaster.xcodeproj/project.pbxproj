@@ -10,7 +10,6 @@
 		9556E21F1B2D408900BB95B5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9556E21E1B2D408900BB95B5 /* main.m */; };
 		9556E2221B2D408900BB95B5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9556E2211B2D408900BB95B5 /* AppDelegate.m */; };
 		9556E2251B2D408900BB95B5 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 9556E2241B2D408900BB95B5 /* GameScene.m */; };
-		9556E2271B2D408900BB95B5 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9556E2261B2D408900BB95B5 /* GameScene.sks */; };
 		9556E22A1B2D408900BB95B5 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9556E2291B2D408900BB95B5 /* GameViewController.m */; };
 		9556E22D1B2D408900BB95B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9556E22B1B2D408900BB95B5 /* Main.storyboard */; };
 		9556E22F1B2D408900BB95B5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9556E22E1B2D408900BB95B5 /* Images.xcassets */; };
@@ -37,7 +36,6 @@
 		9556E2211B2D408900BB95B5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9556E2231B2D408900BB95B5 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		9556E2241B2D408900BB95B5 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
-		9556E2261B2D408900BB95B5 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		9556E2281B2D408900BB95B5 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		9556E2291B2D408900BB95B5 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		9556E22C1B2D408900BB95B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -93,7 +91,6 @@
 				9556E2211B2D408900BB95B5 /* AppDelegate.m */,
 				9556E2231B2D408900BB95B5 /* GameScene.h */,
 				9556E2241B2D408900BB95B5 /* GameScene.m */,
-				9556E2261B2D408900BB95B5 /* GameScene.sks */,
 				9556E2281B2D408900BB95B5 /* GameViewController.h */,
 				9556E2291B2D408900BB95B5 /* GameViewController.m */,
 				9556E22B1B2D408900BB95B5 /* Main.storyboard */,
@@ -220,7 +217,6 @@
 			files = (
 				9556E2321B2D408900BB95B5 /* LaunchScreen.xib in Resources */,
 				9556E22F1B2D408900BB95B5 /* Images.xcassets in Resources */,
-				9556E2271B2D408900BB95B5 /* GameScene.sks in Resources */,
 				956B80691B41080500C96A3D /* edunline.ttf in Resources */,
 				9556E22D1B2D408900BB95B5 /* Main.storyboard in Resources */,
 			);
@@ -372,9 +368,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = XBlaster/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -383,9 +380,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = XBlaster/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
